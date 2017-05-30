@@ -6,4 +6,14 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 35}
   
+  # При создании нового юзера (create), перед валидацией объекта выполнить
+  # метод set_name
+  before_validation :set_name, on: :create
+
+  private
+
+  # Задаем юзеру случайное имя, если оно пустое
+  def set_name
+    self.name = "Товарисч №#{rand(777)}" if self.name.blank?
+  end
 end
