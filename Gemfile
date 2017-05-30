@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.3'
 
+gem 'twitter-bootstrap-rails'
+
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
