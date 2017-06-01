@@ -49,11 +49,16 @@
       </div>
 
   <% end %>
+</div>
 
-<h3>Удалить аккаунт</h3>
-  <%= button_to "Удалить", registration_path(resource_name),
-                data: { confirm: "Вы уверены" },
-                method: :delete,
-                class: 'btn btn-danger'%>
+<div class="row">
+  <h3>Удалить аккаунт</h3>
+    <div class="form-group">
+        <%= button_to "Удалить", registration_path(resource_name),
+                      data: { confirm: "Вы уверены" },
+                      method: :delete,
+                      class: 'btn btn-xs btn-danger'%>
+    </div>
   <%= link_to "Вернуться", :back %>
 </div>
+
