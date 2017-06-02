@@ -8,6 +8,8 @@ gem 'twitter-bootstrap-rails'
 
 gem 'uglifier', '>= 1.3.0'
 
+gem 'therubyracer'
+
 gem 'jquery-rails'
 
 group :production do
