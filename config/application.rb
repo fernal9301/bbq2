@@ -22,5 +22,6 @@ module Bbq
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :ru
+    config.i18n.locale = :ru
   end
 end
