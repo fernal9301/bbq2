@@ -3,6 +3,8 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
+      comment: 'Комментарий'
+      subscription: 'Подписка'
 
     attributes:
       user:
@@ -15,7 +17,13 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
-
+      comment:
+        body: 'Комментарий'
+        user_name: 'Имя'
+      subscription:
+        user_name: 'Имя'
+        user_email: 'Email'
+ 
   controllers:
     events:
       created: 'Вы создали новое мероприятие'
