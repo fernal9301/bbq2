@@ -3,4 +3,4 @@ module ApplicationHelper
     #TODO: user real avatars
     asset_path('user.png')
   end
-end
+ end
