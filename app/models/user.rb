@@ -13,6 +13,7 @@ class User < ApplicationRecord
   before_validation :set_name, on: :create
 
   after_commit :link_subscriptions, on: :create
+
   private
 
   # Задаем юзеру случайное имя, если оно пустое
@@ -21,6 +22,7 @@ class User < ApplicationRecord
   end
 
   def link_subscriptions
-    Subscription.where(user_id: nil, user_email: self.email).update.all(user_id: self.id)
+    Subscription.where(user_id: nil, user_email: self.email)
+      .update_all(user_id: self.id)
   end
 end
