@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
   before_action :set_event, only: [:create, :destroy]
   before_action :set_subscription, only: [:destroy]
+  before_action :author?, only: [:create]
 
   def create
     @new_subscription = @event.subscriptions.build(subscription_params)
@@ -26,6 +27,10 @@ class SubscriptionsController < ApplicationController
   end
 
   private
+
+  def author? 
+    redirect_to @event, alert: I18n.t('controllers.subscriptions.author') if @event.user == current_user
+  end
 
   def set_subscription
     @subscription = @event.subscriptions.find(params[:id])
