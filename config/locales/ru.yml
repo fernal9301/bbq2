@@ -24,6 +24,7 @@ ru:
         user_name: 'Имя'
         user_email: 'Email'
         is_author: 'Вы не можете подписаться на свое событие'
+        busy: 'уже занят'
 
   controllers:
     events:
