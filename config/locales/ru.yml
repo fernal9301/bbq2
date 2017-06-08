@@ -61,5 +61,5 @@ ru:
   errors:
     messages:
       must_not_be_author: 'Вы не можете подписаться на свое событие'
-      already_busy: 'уже занят'
+      already_exist: 'уже занят'
 

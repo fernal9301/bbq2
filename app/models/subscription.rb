@@ -34,6 +34,6 @@ class Subscription < ApplicationRecord
   end
  
   def email_exist
-    errors.add(:user_email, :already_busy) if User.exists?(email: user_email)
+    errors.add(:user_email, :already_exist) if User.exists?(email: user_email)
   end
 end
