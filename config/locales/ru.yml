@@ -27,8 +27,6 @@ ru:
       subscription:
         user_name: 'Имя'
         user_email: 'Email'
-        is_author: 'Вы не можете подписаться на свое событие'
-        busy: 'уже занят'
 
   controllers:
     events:
@@ -67,3 +65,9 @@ ru:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
     many: '%{count} ошибок'
+
+  errors:
+    messages:
+      must_not_be_author: 'Вы не можете подписаться на свое событие'
+      already_exist: 'уже занят'
+

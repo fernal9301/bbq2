@@ -30,10 +30,10 @@ class Subscription < ApplicationRecord
   end 
 
   def author?
-    errors.add(:user, I18n.t('activerecord.attributes.subscription.is_author')) if user == event.user
+    errors.add(:user, :must_not_be_author) if user == event.user
   end
  
   def email_exist
-    errors.add(:user_email, I18n.t('activerecord.attributes.subscription.busy')) if User.exists?(email: user_email)
+    errors.add(:user_email, :already_exist) if User.exists?(email: user_email)
   end
 end
