@@ -46,6 +46,10 @@ class CommentsController < ApplicationController
 
       # XXX: Этот метод может выполняться долго из-за большого числа подписчиков
       # поэтому в реальных приложениях такие вещи надо выносить в background задачи!
+    
+      # удаляем из массива адресов адрес автора коммента
+      all_emails -= [comment.user.email]      
+
       all_emails.each do |mail|
         EventMailer.comment(event, comment, mail).deliver_now
       end
