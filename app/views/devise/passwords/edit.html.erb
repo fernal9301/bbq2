@@ -10,17 +10,17 @@
       <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
     </div>
   </div>
-
+  <br />
   <div class="form-group">
     <div class="col-sm-5">
       <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
     </div>
   </div>
-
+  <br />
   <div class="form-group">
     <div class="col-sm-4">
-      <%= f.submit t('.change_my_password'), class: 'btn btn-primary form-control' %>
+      <%= f.submit t('.change_my_password'), class: 'btn btn-primary form-control buffer-both' %>
     </div>
   </div>
 
