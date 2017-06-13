@@ -2,7 +2,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
 
-  has_many :comments
+  has_many :comments, dependent: :delete_all
   has_many :subscriptions
   has_many :subscribers, through: :subscriptions, source: :user
   has_many :photos
