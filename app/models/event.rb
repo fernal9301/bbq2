@@ -21,4 +21,8 @@ class Event < ApplicationRecord
   def pincode_valid?(pin2chek)
     pincode == pin2chek
   end
+
+  def event_emails 
+    event.subscribers.map(&:email) << event.user.email
+  end
 end
