@@ -23,6 +23,6 @@ class Event < ApplicationRecord
   end
 
   def event_emails 
-    event.subscribers.map(&:email) << event.user.email
+    subscribers.map(&:email) << user.email
   end
 end
