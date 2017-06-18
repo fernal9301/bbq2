@@ -30,10 +30,10 @@ class Subscription < ApplicationRecord
   end
 
   def author?
-    errors.add(:user, :must_not_be_author) if user == event.user
+    errors.add(:base, :must_not_be_author) if user == event.user
   end
 
   def email_exist
-    errors.add(:user_email, :already_exist) if User.exists?(email: user_email)
+    errors.add(:base, I18n.t('.errors.messages.already_exist')) if subscribers.where(email: user_email).exists?
   end
 end

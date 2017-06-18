@@ -93,4 +93,5 @@ ru:
   errors:
     messages:
       must_not_be_author: 'Вы не можете подписаться на свое событие'
-      already_exist: 'уже занят'
+      already_exist: 'Вы уже подписаны на событие'
+      photo_not_present: 'Вы не выбрали фотографию'
