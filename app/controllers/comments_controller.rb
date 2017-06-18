@@ -41,14 +41,10 @@ class CommentsController < ApplicationController
     end
 
     def notify_subscribers(event, comment)
-      if comment.user.email.blank?
-        all_emails = event.event_emails
-      else
-        all_emails = event.event_emails - comment.user.email
-      end
-
+      all_emails = event.event_emails
+      all_emails.delete(comment.user.email) if comment.user
       all_emails.each do |mail|
-        EventMailer.photo(event, photo, mail).deliver_now
+        EventMailer.comment(event, comment, mail).deliver_now
       end
     end
 end
