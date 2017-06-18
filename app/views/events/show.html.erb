@@ -68,7 +68,8 @@
           </p>
         </div>
       </div>
-      <% unless @event.user == current_user %> 
+      <% unless @event.user == current_user ||
+       (@event.event_emails & @event.subscriptions.map(&:user_email)).present? %> 
         <div class="event-subscription-form">
           <h4>Я пойду:</h4>
           <div>
