@@ -34,6 +34,6 @@ class Subscription < ApplicationRecord
   end
 
   def email_exist
-    errors.add(:base, I18n.t('.errors.messages.already_exist')) if subscribers.where(email: user_email).exists?
+    errors.add(:base, I18n.t('.errors.messages.already_exist')) if event.subscribers.where(email: user_email).exists?
   end
 end
