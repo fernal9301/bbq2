@@ -72,7 +72,7 @@
           </p>
         </div>
       </div>
-      <% unless @event.user == current_user || @event.subscribers.include?(current_user) %> 
+      <% unless @event.user == current_user || @event.subscribers.include?(current_user) %>
         <div class="event-subscription-form">
           <h4>Я пойду:</h4>
           <div>

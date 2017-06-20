@@ -43,7 +43,9 @@ class PhotosController < ApplicationController
   end
 
   def notify_photo(event, photo)
-    event.event_emails.each do |mail|
+    all_emails = event.event_emails
+    all_emails.delete(photo.user.email) if photo.user
+    all_emails.each do |mail|
       EventMailer.photo(event, photo, mail).deliver_now
     end
   end

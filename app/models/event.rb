@@ -22,7 +22,7 @@ class Event < ApplicationRecord
     pincode == pin2chek
   end
 
-  def event_emails 
-    subscribers.map(&:email) << user.email
+  def event_emails
+    subscriptions.map(&:user_email) << user.email
   end
 end
