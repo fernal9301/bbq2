@@ -24,7 +24,6 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'byebug'
 end
 
 group :development do
