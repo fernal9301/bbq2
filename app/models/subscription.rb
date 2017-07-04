@@ -14,19 +14,11 @@ class Subscription < ApplicationRecord
   validate :author?, on: :create
 
   def user_name
-    if user.present?
-      user.name
-    else
-      super
-    end
+    user.present? ? user.name : super
   end
 
   def user_email
-    if user.present?
-      user.email
-    else
-      super
-    end
+    user.present? ? user.email : super
   end
 
   def author?
