@@ -7,8 +7,8 @@ class Subscription < ApplicationRecord
   validates :user_email, presence: true,
                          format: /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/,
                          unless: 'user.present?'
-  validates :user, uniqueness: {scope: :event_id}, if: 'user.present?'
-  validates :user_email, uniqueness: {scope: :event_id}, unless: 'user.present?'
+  validates :user, uniqueness: { scope: :event_id }, if: 'user.present?'
+  validates :user_email, uniqueness: { scope: :event_id }, unless: 'user.present?'
 
   validate :email_exist, on: :create, unless: 'user.present?'
   validate :author?, on: :create

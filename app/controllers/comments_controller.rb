@@ -15,12 +15,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    message = {notice: I18n.t('controllers.comments.destroyed')}
+    message = { notice: I18n.t('controllers.comments.destroyed') }
 
     if current_user_can_edit?(@comment)
       @comment.destroy!
     else
-      message = {alert: I18n.t('controllers.comments.error')}
+      message = { alert: I18n.t('controllers.comments.error') }
     end
 
     redirect_to @event, message
@@ -28,23 +28,23 @@ class CommentsController < ApplicationController
 
   private
 
-    def set_event
-      @event = Event.find(params[:event_id])
-    end
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
-    def set_comment
-      @comment = @event.comments.find(params[:id])
-    end
+  def set_comment
+    @comment = @event.comments.find(params[:id])
+  end
 
-    def comment_params
-      params.require(:comment).permit(:body, :user_name)
-    end
+  def comment_params
+    params.require(:comment).permit(:body, :user_name)
+  end
 
-    def notify_subscribers(event, comment)
-      all_emails = event.event_emails
-      all_emails.delete(comment.user.email) if comment.user
-      all_emails.each do |mail|
-        EventMailer.comment(event, comment, mail).deliver_now
-      end
+  def notify_subscribers(event, comment)
+    all_emails = event.event_emails
+    all_emails.delete(comment.user.email) if comment.user
+    all_emails.each do |mail|
+      EventMailer.comment(event, comment, mail).deliver_now
     end
+  end
 end

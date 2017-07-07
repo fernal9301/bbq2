@@ -1,5 +1,5 @@
 <%= form_for [@event, comment] do |f| %>
-    <%= render partial: 'partials/form_errors', locals: {model: comment} %>
+    <%= render partial: 'partials/form_errors', locals: { model: comment } %>
 
     <div class="form-group">
       <%= f.label :body %>
