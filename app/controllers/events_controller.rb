@@ -48,22 +48,28 @@ class EventsController < ApplicationController
 
   private
 
-  def password_guard!
-    return true if @event.pincode.blank?
-    return true if signed_in? && current_user == @event.user
-
+  def set_cookies
     if params[:pincode].present? && @event.pincode_valid?(params[:pincode])
       cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
     end
+    cookies.permanent["events_#{@event.id}_pincode"]
+  end
 
-    # Проверяем — верный ли в куках пинкод, если нет — ругаемся и рендерим форму
-    pincode = cookies.permanent["events_#{@event.id}_pincode"]
+  def check_wrong_pincode(pincode)
     unless @event.pincode_valid?(pincode)
       if params[:pincode].present?
         flash.now[:alert] = I18n.t('controllers.events.wrong_pincode')
       end
       render 'password_form'
     end
+  end
+
+  def password_guard!
+    return true if @event.pincode.blank?
+    return true if signed_in? && current_user == @event.user
+
+    pincode = set_cookies
+    check_wrong_pincode(pincode)
   end
 
   def set_current_user_event

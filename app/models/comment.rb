@@ -7,6 +7,6 @@ class Comment < ApplicationRecord
   validates :user_name, presence: true, unless: 'user.present?'
 
   def user_name
-    user.name
+    user.present? ? user.name : super
   end
 end
